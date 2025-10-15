@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services de Design - Business Unit 5</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #615f5f;
+            line-height: 1.6;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-weight: 400;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header avec logo */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #ddd;
+            position: sticky;
+            top: 0;
+            background-color: rgba(249, 249, 249, 0.95);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .header.scrolled {
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: #1a4a6b;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover .logo-text {
+            transform: scale(1.05);
+        }
+        
+        .logo-accent {
+            color: #3594d6;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #615f5f;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #3594d6;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #3594d6;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Sections */
+        section {
+            padding: 60px 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        h1, h2, h3 {
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: #1a4a6b;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: #3594d6;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: width 0.5s ease;
+        }
+        
+        h2:hover::after {
+            width: 100px;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            color: #615f5f;
+        }
+        
+        /* Grille des services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            border-top: 4px solid #3594d6;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .service-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(53, 148, 214, 0.2);
+        }
+        
+        .service-card h3 {
+            margin-bottom: 15px;
+            color: #1a4a6b;
+            transition: color 0.3s ease;
+        }
+        
+        .service-card:hover h3 {
+            color: #3594d6;
+        }
+        
+        .learn-more {
+            display: inline-block;
+            margin-top: auto;
+            color: #3594d6;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding-top: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .learn-more::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: -100%;
+            background-color: #1a4a6b;
+            transition: left 0.3s ease;
+        }
+        
+        .learn-more:hover {
+            color: #1a4a6b;
+            padding-left: 10px;
+        }
+        
+        .learn-more:hover::before {
+            left: 0;
+        }
+        
+        /* Section CTA */
+        .cta {
+            background-color: #3594d6;
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(26, 74, 107, 0.1), rgba(53, 148, 214, 0.1));
+            z-index: 1;
+        }
+        
+        .cta h2 {
+            color: white;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .contact-btn {
+            display: inline-block;
+            background-color: white;
+            color: #3594d6;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.4s ease;
+            border: 2px solid white;
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+        }
+        
+        .contact-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #1a4a6b;
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+        
+        .contact-btn:hover {
+            background-color: transparent;
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .contact-btn:hover::before {
+            left: 0;
+        }
+        
+        /* Section Projects */
+        .projects-section {
+            padding: 40px 0;
+        }
+        
+        .projects-section h2 {
+            margin-bottom: 20px;
+        }
+        
+        /* Tableau des projets */
+        .projects-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.8s ease;
+        }
+        
+        .projects-table.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .projects-table th, .projects-table td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+            transition: all 0.3s ease;
+        }
+        
+        .projects-table th {
+            background-color: #1a4a6b;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .projects-table td {
+            background-color: white;
+        }
+        
+        .projects-table td strong {
+            color: #3594d6;
+            transition: color 0.3s ease;
+        }
+        
+        .projects-table tr:hover td {
+            background-color: #f5f9ff;
+        }
+        
+        .projects-table tr:hover td strong {
+            color: #1a4a6b;
+        }
+        
+        /* Formulaire de contact */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .contact-form.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.5s ease;
+        }
+        
+        .form-group.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .form-group:nth-child(2) {
+            transition-delay: 0.1s;
+        }
+        
+        .form-group:nth-child(3) {
+            transition-delay: 0.2s;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #1a4a6b;
+        }
+        
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            font-family: 'Montserrat', Arial, sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: #3594d6;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(53, 148, 214, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: #3594d6;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            font-family: 'Montserrat', Arial, sans-serif;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #1a4a6b;
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+        
+        .submit-btn:hover {
+            background-color: #1a4a6b;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(26, 74, 107, 0.3);
+        }
+        
+        .submit-btn:hover::before {
+            left: 0;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a4a6b;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .footer-logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        .footer-contact {
+            margin-top: 10px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .projects-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .projects-table th, .projects-table td {
+                padding: 10px 5px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header avec logo Business Unit 5 -->
+        <header class="header" id="header">
+            <div class="logo">
+                <div class="logo-text">Business <span class="logo-accent">Unit 5</span></div>
+            </div>
+            <nav class="nav-links">
+                <a href="#services">Services</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
+
+        <!-- Section Services -->
+        <section id="services">
+            <h2>Services We Provide</h2>
+            
+            <div class="services-grid">
+                <!-- Carte de service 1 -->
+                <div class="service-card">
+                    <h3>Web Development</h3>
+                    <p>Développement de sites web modernes et responsives utilisant les dernières technologies pour offrir une expérience utilisateur optimale.</p>
+                    <a href="#" class="learn-more">Learn more →</a>
+                </div>
+                
+                <!-- Carte de service 2 -->
+                <div class="service-card">
+                    <h3>Mobile Development</h3>
+                    <p>Création d'applications mobiles natives et hybrides pour iOS et Android, avec des interfaces intuitives et des performances optimales.</p>
+                    <a href="#" class="learn-more">Learn more →</a>
+                </div>
+                
+                <!-- Carte de service 3 -->
+                <div class="service-card">
+                    <h3>Mechanical Design</h3>
+                    <p>Conception mécanique assistée par ordinateur (CAO) pour développer des produits innovants et fonctionnels dans divers secteurs industriels.</p>
+                    <a href="#" class="learn-more">Learn more →</a>
+                </div>
+                
+                <!-- Carte de service 4 -->
+                <div class="service-card">
+                    <h3>Prototyping</h3>
+                    <p>Création de prototypes physiques et numériques pour valider les concepts, tester les fonctionnalités et optimiser les designs avant la production.</p>
+                    <a href="#" class="learn-more">Learn more →</a>
+                </div>
+                
+                <!-- Carte de service 5 -->
+                <div class="service-card">
+                    <h3>Design of Electronic Cards</h3>
+                    <p>Conception et développement de cartes électroniques sur mesure, de la schématique à la réalisation du PCB, pour répondre à des besoins spécifiques.</p>
+                    <a href="#" class="learn-more">Learn more →</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section Projects -->
+        <section id="projects" class="projects-section">
+            <h2>Projects</h2>
+            
+            <table class="projects-table">
+                <thead>
+                    <tr>
+                        <th>Web Development</th>
+                        <th>Mobile Development</th>
+                        <th>Mechanical Design</th>
+                        <th>Prototyping</th>
+                        <th>Design of Electronic Cards</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Polygone Learning</strong></td>
+                        <td><strong>Prod' Active</strong></td>
+                        <td><strong>Prototype pulvérisateur pour la matrice 600pro</strong></td>
+                        <td><strong>Prototype Bras robotique</strong></td>
+                        <td><strong>Smart car parking</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tipi By K</strong></td>
+                        <td><strong>Blpro Junior Entreprise</strong></td>
+                        <td><strong>Porte empreinte dentaire</strong></td>
+                        <td><strong>Imprimante 3D</strong></td>
+                        <td><strong>Snooker</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <!-- Section CTA -->
+        <section class="cta">
+            <h2>Let's Create an Amazing Project Together!</h2>
+            <a href="#contact" class="contact-btn">Contact Us</a>
+        </section>
+        
+        <!-- Formulaire de contact -->
+        <section id="contact">
+            <h2>Let's Talk for Your Next Projects</h2>
+            
+            <div class="contact-form">
+                <div class="form-group">
+                    <label for="name">Your Name *</label>
+                    <input type="text" id="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Your Message *</label>
+                    <textarea id="message" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Send Message</button>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Business <span style="color: #71b4e2">Unit 5</span></div>
+                <p>Votre partenaire en design et développement</p>
+                <div class="footer-contact">
+                    <p>Email: contact@businessunit5.com</p>
+                </div>
+                <p>&copy; 2025 Business Unit 5. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Animation au défilement
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animation du header au scroll
+            window.addEventListener('scroll', function() {
+                const header = document.getElementById('header');
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Observer pour les animations au scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        
+                        // Animation des cartes de services
+                        if (entry.target.id === 'services') {
+                            const serviceCards = document.querySelectorAll('.service-card');
+                            serviceCards.forEach((card, index) => {
+                                setTimeout(() => {
+                                    card.classList.add('animate');
+                                }, index * 150);
+                            });
+                        }
+                        
+                        // Animation du tableau des projets
+                        if (entry.target.id === 'projects') {
+                            const projectsTable = document.querySelector('.projects-table');
+                            setTimeout(() => {
+                                projectsTable.classList.add('animate');
+                            }, 300);
+                        }
+                        
+                        // Animation du formulaire de contact
+                        if (entry.target.id === 'contact') {
+                            const contactForm = document.querySelector('.contact-form');
+                            const formGroups = document.querySelectorAll('.form-group');
+                            
+                            setTimeout(() => {
+                                contactForm.classList.add('animate');
+                            }, 300);
+                            
+                            formGroups.forEach((group, index) => {
+                                setTimeout(() => {
+                                    group.classList.add('animate');
+                                }, 500 + (index * 150));
+                            });
+                        }
+                    }
+                });
+            }, observerOptions);
+            
+            // Observer les sections
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
