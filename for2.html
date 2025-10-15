@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crypto Platform</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      background-color: #f9f9f9;
+      color: #615f5f;
+      line-height: 1.6;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: 400;
+      overflow-x: hidden;
+    }
+    
+    /* Header styles */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 5%;
+      position: sticky;
+      top: 0;
+      background-color: rgba(249, 249, 249, 0.95);
+      z-index: 1000;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+    
+    header.scrolled {
+      padding: 15px 5%;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .logo {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: #1a4a6b;
+      transition: transform 0.3s ease;
+    }
+    
+    .logo span {
+      color: #3594d6;
+    }
+    
+    .logo:hover {
+      transform: scale(1.05);
+    }
+    
+    nav {
+      display: flex;
+      gap: 30px;
+    }
+    
+    nav a {
+      text-decoration: none;
+      color: #615f5f;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    nav a:hover {
+      color: #3594d6;
+    }
+    
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: #3594d6;
+      transition: width 0.3s ease;
+    }
+    
+    nav a:hover::after {
+      width: 100%;
+    }
+    
+    .btn {
+      background-color: #3594d6;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      transition: all 0.4s ease;
+      font-family: 'Montserrat', Arial, sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: #1a4a6b;
+      transition: left 0.4s ease;
+      z-index: -1;
+    }
+    
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(53, 148, 214, 0.4);
+    }
+    
+    .btn:hover::before {
+      left: 0;
+    }
+    
+    /* Hero section */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 80px 5%;
+      max-width: 1400px;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+    
+    .hero.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .hero-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+    
+    .hero-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.5s ease;
+    }
+    
+    .hero-image img:hover {
+      transform: scale(1.02);
+    }
+    
+    .hero-text {
+      flex: 1;
+      padding-left: 60px;
+    }
+    
+    .hero-text h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+      color: #1a4a6b;
+      line-height: 1.2;
+    }
+    
+    .highlight {
+      color: #3594d6;
+    }
+    
+    .sub {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    
+    .muted {
+      color: #888;
+      font-weight: 400;
+    }
+    
+    .desc {
+      font-size: 1rem;
+      color: #615f5f;
+      max-width: 500px;
+    }
+    
+    /* Features section */
+    .features {
+      padding: 80px 5%;
+      background-color: white;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+    
+    .features.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .features h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 50px;
+      font-weight: 700;
+      color: #1a4a6b;
+      position: relative;
+    }
+    
+    .features h2::after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 3px;
+      background: #3594d6;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: width 0.5s ease;
+    }
+    
+    .features h2:hover::after {
+      width: 100px;
+    }
+    
+    .cards {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .card {
+      background: white;
+      border-radius: 8px;
+      padding: 40px 30px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s ease;
+      border-top: 4px solid #3594d6;
+      flex: 1;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    
+    .card.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(53, 148, 214, 0.2);
+    }
+    
+    .card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: #1a4a6b;
+      transition: color 0.3s ease;
+    }
+    
+    .card:hover h3 {
+      color: #3594d6;
+    }
+    
+    .card p {
+      color: #615f5f;
+    }
+    
+    .card a {
+      color: #3594d6;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card a::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: 0;
+      left: -100%;
+      background-color: #1a4a6b;
+      transition: left 0.3s ease;
+    }
+    
+    .card a:hover {
+      color: #1a4a6b;
+      padding-left: 10px;
+    }
+    
+    .card a:hover::before {
+      left: 0;
+    }
+    
+    /* Stats section */
+    .stats {
+      display: flex;
+      justify-content: space-between;
+      padding: 60px 5%;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 40px;
+    }
+    
+    .stat {
+      flex: 1;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+    
+    .stat.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .stat h4 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      color: #1a4a6b;
+      font-weight: 700;
+    }
+    
+    .stat p {
+      color: #615f5f;
+    }
+    
+    /* Footer */
+    footer {
+      background-color: #1a4a6b;
+      color: white;
+      padding: 80px 5%;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+    
+    footer.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    footer h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      font-weight: 700;
+    }
+    
+    footer p {
+      margin-bottom: 30px;
+      font-size: 1.1rem;
+    }
+    
+    /* Responsive styles */
+    @media (max-width: 1024px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .hero-text {
+        padding-left: 0;
+        margin-top: 40px;
+      }
+      
+      .cards {
+        flex-direction: column;
+      }
+      
+      .stats {
+        flex-direction: column;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .hero-text h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <div class="logo">BU5<span>.</span></div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#">BU5</a>
+    </nav>
+    <button class="btn">Explore now</button>
+  </header>
+
+  <section class="hero">
+    <div class="hero-image">
+      <img src="1234.png" alt="Crypto Banner">
+    </div>
+    <div class="hero-text">
+      <h1> <span class="highlight">Business Unit 5</span><br>BOLDLY UNITING THE EIGHT<br>BU5 WILL ALWAYS BE GREAT</h1>
+      <p class="sub">100+ <span class="muted">Clients</span></p>
+      <p class="desc">Business Unit 5 is a dynamic team within Junior Enterprise ENISo, dedicated to innovation, collaboration, and professional growth through real-world engineering projects.</p>
+    </div>
+  </section>
+
+  <section class="features">
+    <h2>Your <span class="highlight">trusted</span> partner for innovation.</h2>
+    <div class="cards">
+      <div class="card" data-animate>
+        <h3>01.</h3>
+        <p>Service for Any Level of Expertise.</p>
+      </div>
+      <div class="card active" data-animate>
+        <h3>02.</h3>
+        <p>Industry best practices. <a href="#">Learn more →</a></p>
+      </div>
+      <div class="card" data-animate>
+        <h3>03.</h3>
+        <p>Protected by Insurance.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="stat" data-animate>
+      <h4>$4,528 USD</h4>
+      <p>Securing a growing ecosystem of specialized blockchains.</p>
+    </div>
+    <div class="stat" data-animate>
+      <h4>1,44,528 BTC</h4>
+      <p>Polkadot unites and secures a growing ecosystem of specialized blockchains.</p>
+    </div>
+  </section>
+
+  <footer>
+    <h2 data-animate>Trusted <span class="highlight">platform</span> anytime & anywhere.</h2>
+    <p data-animate>Need help with a project?</p>
+    <button class="btn" data-animate>Contact Us</button>
+  </footer>
+
+  <script>
+    // Animation on scroll
+    document.addEventListener('DOMContentLoaded', function() {
+      // Header scroll effect
+      window.addEventListener('scroll', function() {
+        const header = document.getElementById('header');
+        if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      });
+      
+      // Observer for scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+      
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            
+            // Animation for cards
+            if (entry.target.classList.contains('features')) {
+              const cards = document.querySelectorAll('.card');
+              cards.forEach((card, index) => {
+                setTimeout(() => {
+                  card.classList.add('animate');
+                }, index * 150);
+              });
+            }
+            
+            // Animation for stats
+            if (entry.target.classList.contains('stats')) {
+              const stats = document.querySelectorAll('.stat');
+              stats.forEach((stat, index) => {
+                setTimeout(() => {
+                  stat.classList.add('animate');
+                }, index * 200);
+              });
+            }
+          }
+        });
+      }, observerOptions);
+      
+      // Observe sections
+      const sections = document.querySelectorAll('section, footer');
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+    });
+  </script>
+</body>
+</html>
