@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Élève Ingénieur | Innovation & Technologie</title>
+    <title>Engineering Student Portfolio | Innovation & Technology</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* Variables CSS basées sur votre palette */
+        /* Variables CSS based on your palette */
         :root {
             /* Primary Colors */
             --primary-dark: #1a4a6b;
@@ -31,7 +31,7 @@
             --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        /* Reset et styles de base */
+        /* Reset and base styles */
         * {
             margin: 0;
             padding: 0;
@@ -51,7 +51,7 @@
             overflow-x: hidden;
         }
 
-        /* Typographie moderne */
+        /* Modern typography */
         h1, h2, h3, h4, h5, h6 {
             font-weight: 700;
             line-height: 1.2;
@@ -95,7 +95,7 @@
             position: relative;
         }
 
-        /* Navigation avancée */
+        /* Advanced navigation */
         header {
             position: fixed;
             top: 0;
@@ -173,8 +173,8 @@
             width: 100%;
         }
 
-        /* Hero Section avec animations */
-        #accueil {
+        /* Hero Section with animations */
+        #home {
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -266,22 +266,15 @@
             display: inline-block;
         }
 
-        /* PHOTO DE PROFIL - PERSONNALISATION */
-        /* 549686074_1521538609027693_634275176532733578_n
-        POUR CHANGER LA PHOTO DE PROFIL :
-        1. Remplacez l'URL dans le HTML (ligne ~270) par le chemin de votre image
-        2. Ajustez la taille si nécessaire en modifiant les valeurs width et height ci-dessous
-        */
+        /* PROFILE PHOTO - CUSTOMIZATION */
         .profile-img {
-            width: 500px;  /* Taille agrandie - ajustez selon vos besoins */
-            height: 500px; /* Taille agrandie - ajustez selon vos besoins */
+            width: 500px;  /* Enlarged size - adjust according to your needs */
+            height: 500px; /* Enlarged size - adjust according to your needs */
             border-radius: 50%;
             object-fit: cover;
             border: 8px solid white;
             box-shadow: var(--shadow);
             animation: morph 8s ease-in-out infinite;
-            <img src="images/profile.jpg" alt="Photo de profil" class="profile-img">
-
         }
 
         .floating-elements {
@@ -323,8 +316,8 @@
             animation-delay: 3s;
         }
 
-        /* Section Compétences avec tableau */
-        #competences {
+        /* Skills Section with table */
+        #skills {
             background: linear-gradient(135deg, var(--alice-blue) 0%, var(--white) 100%);
         }
 
@@ -415,7 +408,7 @@
             transform: translateY(-2px);
         }
 
-        /* Section Soft Skills améliorée */
+        /* Enhanced Soft Skills Section */
         #soft-skills {
             background: var(--alice-blue);
         }
@@ -503,7 +496,7 @@
             animation: shimmer 2s infinite;
         }
 
-        /* Section Contact avec formulaire amélioré */
+        /* Contact Section with enhanced form */
         #contact {
             background: linear-gradient(135deg, var(--alice-blue) 0%, var(--white) 100%);
         }
@@ -550,7 +543,7 @@
             flex-shrink: 0;
         }
 
-        /* Formulaire amélioré */
+        /* Enhanced form */
         .contact-form-container {
             background: white;
             padding: 3rem;
@@ -646,7 +639,7 @@
             border-left: 4px solid #155724;
         }
 
-        /* Footer moderne */
+        /* Modern footer */
         footer {
             background: var(--primary-dark);
             color: white;
@@ -720,7 +713,7 @@
             color: rgba(255, 255, 255, 0.6);
         }
 
-        /* Animations personnalisées */
+        /* Custom animations */
         @keyframes float {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
             50% { transform: translateY(-20px) rotate(5deg); }
@@ -758,7 +751,7 @@
             100% { transform: translateX(100%); }
         }
 
-        /* Classes d'animation */
+        /* Animation classes */
         .animate-on-scroll {
             opacity: 0;
             transform: translateY(50px);
@@ -802,7 +795,7 @@
                 justify-content: center;
             }
             
-            /* PHOTO RESPONSIVE - Taille réduite sur mobile */
+            /* RESPONSIVE PHOTO - Reduced size on mobile */
             .profile-img {
                 width: 350px;
                 height: 350px;
@@ -833,8 +826,8 @@
             <nav>
                 <a href="#" class="logo">PORTFOLIO</a>
                 <div class="nav-links">
-                    <a href="#accueil" class="active">Accueil</a>
-                    <a href="#competences">Compétences</a>
+                    <a href="#home" class="active">Home</a>
+                    <a href="#skills">Skills</a>
                     <a href="#soft-skills">Soft Skills</a>
                     <a href="#contact">Contact</a>
                 </div>
@@ -845,25 +838,25 @@
         </div>
     </header>
 
-    <!-- Section Hero -->
-    <section id="accueil">
+    <!-- Hero Section -->
+    <section id="home">
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text animate-on-scroll">
                     <div class="hero-badge">
-                        <i class="fas fa-rocket"></i> Élève Ingénieur Passionné
+                        <i class="fas fa-rocket"></i> Passionate Engineering Student
                     </div>
-                    <h1>Innovation & Technologie</h1>
+                    <h1>Farah Khcherem</h1>
                     <p class="hero-description">
-                        Passionné par le développement, l'innovation et les nouvelles technologies. 
-                        Je crée des solutions digitales modernes et performantes.
+                        Farah Khcherem, first-year mechatronics engineering student passionate about development, innovation, and new technologies. 
+                        I create modern and efficient digital solutions.
                     </p>
                     <div class="hero-btns">
                         <a href="#contact" class="btn btn-primary">
-                            <i class="fas fa-paper-plane"></i> Me Contacter
+                            <i class="fas fa-paper-plane"></i> Contact Me
                         </a>
-                        <a href="#competences" class="btn btn-outline">
-                            <i class="fas fa-code"></i> Voir mes Projets
+                        <a href="#skills" class="btn btn-outline">
+                            <i class="fas fa-code"></i> View My Projects
                         </a>
                     </div>
                 </div>
@@ -871,14 +864,14 @@
                     <div class="profile-container">
                         <!-- 
                         ============================================
-                        PERSONNALISATION DE LA PHOTO DE PROFIL
+                        PROFILE PHOTO CUSTOMIZATION
                         ============================================
-                        REMPLACEZ L'URL CI-DESSOUS PAR LE CHEMIN DE VOTRE PHOTO
-                        Exemples :
-                        - "images/ma-photo.jpg" (fichier local)
-                        - "https://exemple.com/ma-photo.jpg" (URL externe)
+                        REPLACE THE URL BELOW WITH YOUR PHOTO PATH
+                        Examples:
+                        - "images/my-photo.jpg" (local file)
+                        - "https://example.com/my-photo.jpg" (external URL)
                         -->
-                       <img src="profile.jpg" alt="Photo de profil" class="profile-img">
+                       <img src="profile.jpg" alt="Profile Photo" class="profile-img">
                         <div class="floating-elements">
                             <div class="floating-element"></div>
                             <div class="floating-element"></div>
@@ -890,36 +883,36 @@
         </div>
     </section>
 
-    <!-- Section Compétences avec tableau -->
-    <section id="competences">
+    <!-- Skills Section with table -->
+    <section id="skills">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">Mes Compétences Techniques</h2>
+            <h2 class="section-title animate-on-scroll">My Technical Skills</h2>
             <p class="section-subtitle animate-on-scroll" style="text-align: center; margin-bottom: 4rem;">
-                Découvrez mes domaines d'expertise et les technologies que je maîtrise
+                Discover my areas of expertise and the technologies I master
             </p>
             
             <div class="skills-table-container animate-on-scroll">
                 <table class="skills-table">
                     <thead>
                         <tr>
-                            <th>Compétences</th>
-                            <th>Niveau</th>
-                            <th>Projets</th>
+                            <th>Skills</th>
+                            <th>Level</th>
+                            <th>Projects</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Développement Web</td>
-                            <td><span class="skill-level advanced">Avancé</span></td>
+                            <td>Web Development</td>
+                            <td><span class="skill-level advanced">Advanced</span></td>
                             <td>
-                                <a href="#" class="project-link">Site E-commerce</a>
-                                <a href="#" class="project-link">Application React</a>
-                                <a href="#" class="project-link">API REST</a>
+                                <a href="#" class="project-link">E-commerce Site</a>
+                                <a href="#" class="project-link">React Application</a>
+                                <a href="#" class="project-link">REST API</a>
                             </td>
                         </tr>
                         <tr>
-                            <td>Base de Données</td>
-                            <td><span class="skill-level intermediate">Intermédiaire</span></td>
+                            <td>Database</td>
+                            <td><span class="skill-level intermediate">Intermediate</span></td>
                             <td>
                                 <a href="#" class="project-link">PostgreSQL</a>
                                 <a href="#" class="project-link">MongoDB</a>
@@ -927,8 +920,8 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Programmation</td>
-                            <td><span class="skill-level advanced">Avancé</span></td>
+                            <td>Programming</td>
+                            <td><span class="skill-level advanced">Advanced</span></td>
                             <td>
                                 <a href="#" class="project-link">Python</a>
                                 <a href="#" class="project-link">Java</a>
@@ -938,7 +931,7 @@
                         </tr>
                         <tr>
                             <td>Cloud & DevOps</td>
-                            <td><span class="skill-level intermediate">Intermédiaire</span></td>
+                            <td><span class="skill-level intermediate">Intermediate</span></td>
                             <td>
                                 <a href="#" class="project-link">Docker</a>
                                 <a href="#" class="project-link">AWS</a>
@@ -947,16 +940,16 @@
                         </tr>
                         <tr>
                             <td>Machine Learning</td>
-                            <td><span class="skill-level beginner">Débutant</span></td>
+                            <td><span class="skill-level beginner">Beginner</span></td>
                             <td>
                                 <a href="#" class="project-link">TensorFlow</a>
                                 <a href="#" class="project-link">Scikit-learn</a>
-                                <a href="#" class="project-link">Analyse de données</a>
+                                <a href="#" class="project-link">Data Analysis</a>
                             </td>
                         </tr>
                         <tr>
-                            <td>Systèmes Embarqués</td>
-                            <td><span class="skill-level intermediate">Intermédiaire</span></td>
+                            <td>Embedded Systems</td>
+                            <td><span class="skill-level intermediate">Intermediate</span></td>
                             <td>
                                 <a href="#" class="project-link">Arduino</a>
                                 <a href="#" class="project-link">Raspberry Pi</a>
@@ -969,18 +962,18 @@
         </div>
     </section>
 
-    <!-- Section Soft Skills améliorée -->
+    <!-- Enhanced Soft Skills Section -->
     <section id="soft-skills">
         <div class="container">
             <h2 class="section-title animate-on-scroll">Soft Skills</h2>
             <p class="section-subtitle animate-on-scroll" style="text-align: center; margin-bottom: 4rem;">
-                Les compétences humaines qui font la différence dans un environnement professionnel
+                The human skills that make a difference in a professional environment
             </p>
             
             <div class="soft-skills-grid">
                 <div class="soft-skill-card animate-on-scroll">
                     <div class="soft-skill-header">
-                        <div class="soft-skill-name">Créativité</div>
+                        <div class="soft-skill-name">Creativity</div>
                         <div class="soft-skill-percentage">85%</div>
                     </div>
                     <div class="soft-skill-bar">
@@ -990,7 +983,7 @@
                 
                 <div class="soft-skill-card animate-on-scroll">
                     <div class="soft-skill-header">
-                        <div class="soft-skill-name">Travail d'équipe</div>
+                        <div class="soft-skill-name">Teamwork</div>
                         <div class="soft-skill-percentage">90%</div>
                     </div>
                     <div class="soft-skill-bar">
@@ -1000,7 +993,7 @@
                 
                 <div class="soft-skill-card animate-on-scroll">
                     <div class="soft-skill-header">
-                        <div class="soft-skill-name">Gestion du temps</div>
+                        <div class="soft-skill-name">Time Management</div>
                         <div class="soft-skill-percentage">75%</div>
                     </div>
                     <div class="soft-skill-bar">
@@ -1010,7 +1003,7 @@
                 
                 <div class="soft-skill-card animate-on-scroll">
                     <div class="soft-skill-header">
-                        <div class="soft-skill-name">Orientation résultats</div>
+                        <div class="soft-skill-name">Results Orientation</div>
                         <div class="soft-skill-percentage">92%</div>
                     </div>
                     <div class="soft-skill-bar">
@@ -1030,7 +1023,7 @@
                 
                 <div class="soft-skill-card animate-on-scroll">
                     <div class="soft-skill-header">
-                        <div class="soft-skill-name">Adaptabilité</div>
+                        <div class="soft-skill-name">Adaptability</div>
                         <div class="soft-skill-percentage">80%</div>
                     </div>
                     <div class="soft-skill-bar">
@@ -1041,12 +1034,12 @@
         </div>
     </section>
 
-    <!-- Section Contact avec formulaire amélioré -->
+    <!-- Contact Section with enhanced form -->
     <section id="contact">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">Me Contacter</h2>
+            <h2 class="section-title animate-on-scroll">Contact Me</h2>
             <p class="section-subtitle animate-on-scroll" style="text-align: center; margin-bottom: 4rem;">
-                N'hésitez pas à me contacter pour toute question ou opportunité
+                Feel free to contact me for any questions or opportunities
             </p>
             
             <div class="contact-container">
@@ -1066,7 +1059,7 @@
                             <i class="fas fa-phone"></i>
                         </div>
                         <div>
-                            <h3>Téléphone</h3>
+                            <h3>Phone</h3>
                             <p>+216 52 427 336</p>
                         </div>
                     </div>
@@ -1076,8 +1069,8 @@
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <div>
-                            <h3>Localisation</h3>
-                            <p>Tunis, Tunisie</p>
+                            <h3>Location</h3>
+                            <p>Tunis, Tunisia</p>
                         </div>
                     </div>
                 </div>
@@ -1085,34 +1078,34 @@
                 <div class="contact-form-container animate-on-scroll">
                     <form id="contactForm">
                         <div class="form-group">
-                            <label class="form-label" for="name">Nom complet</label>
-                            <input type="text" id="name" name="name" class="form-control" placeholder="Votre nom">
+                            <label class="form-label" for="name">Full Name</label>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Your name">
                             <div class="error-message" id="name-error"></div>
                         </div>
                         
                         <div class="form-group">
                             <label class="form-label" for="email">Email</label>
-                            <input type="email" id="email" name="email" class="form-control" placeholder="votre.email@example.com">
+                            <input type="email" id="email" name="email" class="form-control" placeholder="your.email@example.com">
                             <div class="error-message" id="email-error"></div>
                         </div>
                         
                         <div class="form-group">
                             <label class="form-label" for="message">Message</label>
-                            <textarea id="message" name="message" class="form-control" placeholder="Votre message..."></textarea>
+                            <textarea id="message" name="message" class="form-control" placeholder="Your message..."></textarea>
                             <div class="error-message" id="message-error"></div>
                         </div>
                         
                         <div class="form-buttons">
                             <button type="submit" class="btn btn-primary" id="submit-btn">
-                                <i class="fas fa-paper-plane"></i> Envoyer le message
+                                <i class="fas fa-paper-plane"></i> Send Message
                             </button>
                             <button type="reset" class="btn btn-reset">
-                                <i class="fas fa-undo"></i> Réinitialiser
+                                <i class="fas fa-undo"></i> Reset
                             </button>
                         </div>
                         
                         <div id="confirmation">
-                            Votre message a été envoyé avec succès !
+                            Your message has been sent successfully!
                         </div>
                     </form>
                 </div>
@@ -1126,35 +1119,21 @@
             <div class="footer-content">
                 <div class="footer-about">
                     <div class="footer-logo">PORTFOLIO</div>
-                    <p>Élève ingénieur passionné par l'innovation et les nouvelles technologies. Création de solutions digitales modernes et performantes.</p>
-                    <div class="social-links">
-                        <!-- LIENS DES RÉSEAUX SOCIAUX -->
-                        <a href="https://www.facebook.com/saeef1878" target="_blank" class="social-link">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" target="_blank" class="social-link">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" target="_blank" class="social-link">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" target="_blank" class="social-link">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
+                    <p>Engineering student passionate about innovation and new technologies. Creating modern and efficient digital solutions.</p>
+                    
                 </div>
                 
                 <div class="footer-links">
-                    <h4>Liens rapides</h4>
-                    <a href="#accueil">Accueil</a>
-                    <a href="#competences">Compétences</a>
+                    <h4>Quick Links</h4>
+                    <a href="#home">Home</a>
+                    <a href="#skills">Skills</a>
                     <a href="#soft-skills">Soft Skills</a>
                     <a href="#contact">Contact</a>
                 </div>
                 
                 <div class="footer-links">
-                    <h4>Réseaux sociaux</h4>
-                    <!-- LIENS DES RÉSEAUX SOCIAUX AVEC TEXTE -->
+                    <h4>Social Media</h4>
+                    <!-- SOCIAL MEDIA LINKS WITH TEXT -->
                     <a href="https://www.facebook.com/saeef1878" target="_blank">
                         <i class="fab fa-facebook-f"></i> Facebook
                     </a>
@@ -1171,13 +1150,13 @@
             </div>
             
             <div class="copyright">
-                <p>&copy; 2025 Portfolio. Créé avec passion et innovation.</p>
+                <p>&copy; 2025 Portfolio. Created with passion and innovation.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Animation au scroll
+        // Animation on scroll
         const animateOnScroll = () => {
             const elements = document.querySelectorAll('.animate-on-scroll');
             
@@ -1188,7 +1167,7 @@
                 if (elementTop < window.innerHeight - elementVisible) {
                     element.classList.add('animated');
                     
-                    // Animation des barres de progression des soft skills
+                    // Animation of soft skills progress bars
                     if (element.classList.contains('soft-skill-card')) {
                         const progressBar = element.querySelector('.soft-skill-progress');
                         const percentage = progressBar.getAttribute('data-percentage');
@@ -1233,7 +1212,7 @@
             });
         };
 
-        // Validation du formulaire
+        // Form validation
         const contactForm = document.getElementById('contactForm');
         const submitBtn = document.getElementById('submit-btn');
         const confirmation = document.getElementById('confirmation');
@@ -1242,37 +1221,37 @@
             let isValid = true;
             const errors = {};
 
-            // Validation du nom
+            // Name validation
             const name = document.getElementById('name').value.trim();
             if (!name) {
-                errors.name = 'Le nom est requis';
+                errors.name = 'Name is required';
                 isValid = false;
             } else if (name.length > 100) {
-                errors.name = 'Le nom doit faire moins de 100 caractères';
+                errors.name = 'Name must be less than 100 characters';
                 isValid = false;
             }
 
-            // Validation de l'email
+            // Email validation
             const email = document.getElementById('email').value.trim();
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!email) {
-                errors.email = 'L\'email est requis';
+                errors.email = 'Email is required';
                 isValid = false;
             } else if (!emailRegex.test(email)) {
-                errors.email = 'Email invalide';
+                errors.email = 'Invalid email';
                 isValid = false;
             } else if (email.length > 255) {
-                errors.email = 'L\'email doit faire moins de 255 caractères';
+                errors.email = 'Email must be less than 255 characters';
                 isValid = false;
             }
 
-            // Validation du message
+            // Message validation
             const message = document.getElementById('message').value.trim();
             if (!message) {
-                errors.message = 'Le message est requis';
+                errors.message = 'Message is required';
                 isValid = false;
             } else if (message.length > 1000) {
-                errors.message = 'Le message doit faire moins de 1000 caractères';
+                errors.message = 'Message must be less than 1000 characters';
                 isValid = false;
             }
 
@@ -1327,9 +1306,9 @@
                 return;
             }
 
-            // Simulation d'envoi
+            // Simulating sending
             submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
 
             try {
                 await new Promise(resolve => setTimeout(resolve, 2000));
@@ -1342,10 +1321,10 @@
                 }, 5000);
                 
             } catch (error) {
-                console.error('Erreur:', error);
+                console.error('Error:', error);
             } finally {
                 submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Envoyer le message';
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
             }
         });
 
@@ -1357,7 +1336,7 @@
             });
         });
 
-        // Initialisation
+        // Initialization
         window.addEventListener('scroll', () => {
             animateOnScroll();
             headerScroll();
@@ -1370,7 +1349,7 @@
             updateActiveNav();
         });
 
-        // Animation des éléments au chargement
+        // Animation of elements on load
         document.addEventListener('DOMContentLoaded', () => {
             const animatedElements = document.querySelectorAll('.animate-on-scroll');
             animatedElements.forEach((element, index) => {
