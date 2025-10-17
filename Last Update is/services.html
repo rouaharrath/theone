@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Services - Business Unit 5</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+   
+
+    <style>
+        /* Reset and base styles */
+        .service-icon {
+    width: 60px;
+    height: 60px;
+    background-color: #f0f7fd;
+    color: lab(58.78% -5.45 -41.61);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(53, 148, 214, 0.1);
+}
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #615f5f;
+            line-height: 1.6;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-weight: 400;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header with logo - MODIFIÉ POUR ÊTRE BLEU ET PLEINE LARGEUR */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: #1a4a6b; /* Bleu foncé */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 100%; /* Pleine largeur */
+        }
+        
+        .header.scrolled {
+            padding: 15px 5%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: white; /* Texte blanc sur fond bleu */
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover .logo-text {
+            transform: scale(1.05);
+        }
+        
+        .logo-accent {
+            color: #71b4e2; /* Bleu clair pour l'accent */
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: white; /* Texte blanc sur fond bleu */
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-links a:hover {
+            color: #71b4e2; /* Bleu clair au survol */
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #71b4e2;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Sections */
+        section {
+            padding: 60px 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        h1, h2, h3 {
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: #1a4a6b;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: #3594d6;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: width 0.5s ease;
+        }
+        
+        h2:hover::after {
+            width: 100px;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            color: #615f5f;
+        }
+        
+        /* Services grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            border-top: 4px solid #3594d6;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .service-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(53, 148, 214, 0.2);
+        }
+        
+        .service-card h3 {
+            margin-bottom: 15px;
+            color: #1a4a6b;
+            transition: color 0.3s ease;
+        }
+        
+        .service-card:hover h3 {
+            color: #3594d6;
+        }
+        
+        .learn-more {
+            display: inline-block;
+            margin-top: auto;
+            color: #3594d6;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding-top: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .learn-more::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: -100%;
+            background-color: #1a4a6b;
+            transition: left 0.3s ease;
+        }
+        
+        .learn-more:hover {
+            color: #1a4a6b;
+            padding-left: 10px;
+        }
+        
+        .learn-more:hover::before {
+            left: 0;
+        }
+        
+        /* CTA Section */
+        .cta {
+    background-image: url('world.jpg');; /* chemin à adapter */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(26, 74, 107, 0.6); /* assombrit pour lisibilité */
+    z-index: 1;
+}
+
+.cta h2, .cta .contact-btn {
+    position: relative;
+    z-index: 2;
+}
+
+        
+        .cta h2 {
+            color: white;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .contact-btn {
+            display: inline-block;
+            background-color: white;
+            color: #3594d6;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.4s ease;
+            border: 2px solid white;
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+        }
+        
+        .contact-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #1a4a6b;
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+        
+        .contact-btn:hover {
+            background-color: transparent;
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .contact-btn:hover::before {
+            left: 0;
+        }
+        
+        /* Projects Section */
+        .projects-section {
+            padding: 40px 0;
+        }
+        
+        .projects-section h2 {
+            margin-bottom: 20px;
+        }
+        
+        /* Projects table */
+        .projects-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.8s ease;
+        }
+        
+        .projects-table.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .projects-table th, .projects-table td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+            transition: all 0.3s ease;
+        }
+        
+        .projects-table th {
+            background-color: #1a4a6b;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .projects-table td {
+            background-color: white;
+        }
+        
+        .projects-table td strong {
+            color: #3594d6;
+            transition: color 0.3s ease;
+        }
+        
+        .projects-table tr:hover td {
+            background-color: #f5f9ff;
+        }
+        
+        .projects-table tr:hover td strong {
+            color: #1a4a6b;
+        }
+        
+        /* Contact form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .contact-form.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.5s ease;
+        }
+        
+        .form-group.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .form-group:nth-child(2) {
+            transition-delay: 0.1s;
+        }
+        
+        .form-group:nth-child(3) {
+            transition-delay: 0.2s;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #1a4a6b;
+        }
+        
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            font-family: 'Montserrat', Arial, sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: #3594d6;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(53, 148, 214, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: #3594d6;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            font-family: 'Montserrat', Arial, sans-serif;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #1a4a6b;
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+        
+        .submit-btn:hover {
+            background-color: #1a4a6b;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(26, 74, 107, 0.3);
+        }
+        
+        .submit-btn:hover::before {
+            left: 0;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a4a6b;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .footer-logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        .footer-contact {
+            margin-top: 10px;
+        }
+        
+        /* Social Icons in Footer */
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .footer-social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .footer-social-icon:hover {
+            background-color: #3594d6;
+            transform: translateY(-3px);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .projects-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px 5%;
+            }
+            
+            .nav-links {
+                display: flex;
+                gap: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .projects-table th, .projects-table td {
+                padding: 10px 5px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header avec pleine largeur - EN DEHORS DU CONTAINER -->
+    <header class="header" id="header">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <div class="logo">
+                <div class="logo-text">Business <span class="logo-accent">Unit 5</span></div>
+            </div>
+            <nav class="nav-links">
+                <a href="#services">Services</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <br>
+        <br>
+        <!-- Phrase ajoutée avant le titre -->
+<h2 style="text-align: center; color: #1a4a6b; margin-bottom: 10px; font-weight: 500;">
+   Business Unit 5 is a team within the Junior Enterprise ENISo association.
+   </h2>
+   <br>
+   <h3 style="text-align: center; color: #1a4a6b; margin-bottom: 10px; font-weight: 500;"></h3>
+     As part of Junior Enterprise ENISo, our team combines academic knowledge with real-world problem-solving to help companies, startups, and organizations bring their ideas to life.
+
+</h3>
+
+        <!-- Services Section -->
+        <section id="services">
+            <h2>Services We Provide</h2>
+            <br>
+            
+            <div class="services-grid">
+    <!-- Service card 1 -->
+    <div class="service-card">
+        <div class="service-icon">
+            <i class="fas fa-code"></i>
+        </div>
+        <h3>Web Development</h3>
+        <p>Development of modern and responsive websites using the latest technologies to provide an optimal user experience.</p>
+        <a href="#" class="learn-more">Learn more →</a>
+    </div>
+    
+    <!-- Service card 2 -->
+    <div class="service-card">
+        <div class="service-icon">
+            <i class="fas fa-mobile-alt"></i>
+        </div>
+        <h3>Mobile Development</h3>
+        <p>Creation of native and hybrid mobile applications for iOS and Android, with intuitive interfaces and optimal performance.</p>
+        <a href="#" class="learn-more">Learn more →</a>
+    </div>
+    
+    <!-- Service card 3 -->
+    <div class="service-card">
+        <div class="service-icon">
+            <i class="fas fa-cogs"></i>
+        </div>
+        <h3>Mechanical Design</h3>
+        <p>Computer-aided mechanical design (CAD) to develop innovative and functional products across various industrial sectors.</p>
+        <a href="#" class="learn-more">Learn more →</a>
+    </div>
+    
+    <!-- Service card 4 -->
+    <div class="service-card">
+        <div class="service-icon">
+            <i class="fas fa-cube"></i>
+        </div>
+        <h3>Prototyping</h3>
+        <p>Creation of physical and digital prototypes to validate concepts, test functionalities, and optimize designs before production.</p>
+        <a href="#" class="learn-more">Learn more →</a>
+    </div>
+    
+    <!-- Service card 5 -->
+    <div class="service-card">
+        <div class="service-icon">
+            <i class="fas fa-microchip"></i>
+        </div>
+        <h3>Electronic Card Design</h3>
+        <p>Design and development of custom electronic cards, from schematic to PCB realization, to meet specific needs.</p>
+        <a href="#" class="learn-more">Learn more →</a>
+    </div>
+</div>
+
+
+               
+        
+        <!-- Projects Section -->
+        <section id="projects" class="projects-section">
+            <h2>Projects</h2>
+            <br>
+            
+            <table class="projects-table">
+                <thead>
+                    <tr>
+                        <th>Web Development</th>
+                        <th>Mobile Development</th>
+                        <th>Mechanical Design</th>
+                        <th>Prototyping</th>
+                        <th>Electronic Card Design</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Polygone Learning</strong></td>
+                        <td><strong>Prod' Active</strong></td>
+                        <td><strong>Sprayer prototype for 600pro matrix</strong></td>
+                        <td><strong>Robotic Arm Prototype</strong></td>
+                        <td><strong>Smart Car Parking</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tipi By K</strong></td>
+                        <td><strong>Blpro Junior Enterprise</strong></td>
+                        <td><strong>Dental Impression Holder</strong></td>
+                        <td><strong>3D Printer</strong></td>
+                        <td><strong>Snooker</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <!-- CTA Section -->
+<!-- Section CTA modifiée -->
+<section class="cta">
+    <h2>Let's Create an Amazing Project Together!</h2>
+    <a href="#contact" class="contact-btn">Contact Us</a>
+</section>
+
+        
+        <!-- Contact Form -->
+        <section id="contact">
+            <h2>Let's Talk About Your Next Projects</h2>
+            
+            <div class="contact-form">
+                <div class="form-group">
+                    <label for="name">Your Name *</label>
+                    <input type="text" id="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Your Message *</label>
+                    <textarea id="message" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Send Message</button>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Business <span style="color: #71b4e2">Unit 5</span></div>
+                <p>Your partner in design and development</p>
+                <div class="footer-contact">
+                    <p>Email: contact@businessunit5.com</p>
+                </div>
+                
+                <!-- Social Media Icons in Footer -->
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/businessunit5/?next=%2F" class="footer-social-icon" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/groups/24628061170209288?locale=fr_FR" class="footer-social-icon" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/company/yourprofile" class="footer-social-icon" target="_blank">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+                
+                <p>&copy; 2025 Business Unit 5. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            // Header animation on scroll
+            window.addEventListener('scroll', function() {
+                const header = document.getElementById('header');
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Observer for scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        
+                        // Service cards animation
+                        if (entry.target.id === 'services') {
+                            const serviceCards = document.querySelectorAll('.service-card');
+                            serviceCards.forEach((card, index) => {
+                                setTimeout(() => {
+                                    card.classList.add('animate');
+                                }, index * 150);
+                            });
+                        }
+                        
+                        // Projects table animation
+                        if (entry.target.id === 'projects') {
+                            const projectsTable = document.querySelector('.projects-table');
+                            setTimeout(() => {
+                                projectsTable.classList.add('animate');
+                            }, 300);
+                        }
+                        
+                        // Contact form animation
+                        if (entry.target.id === 'contact') {
+                            const contactForm = document.querySelector('.contact-form');
+                            const formGroups = document.querySelectorAll('.form-group');
+                            
+                            setTimeout(() => {
+                                contactForm.classList.add('animate');
+                            }, 300);
+                            
+                            formGroups.forEach((group, index) => {
+                                setTimeout(() => {
+                                    group.classList.add('animate');
+                                }, 500 + (index * 150));
+                            });
+                        }
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe sections
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
