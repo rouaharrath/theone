@@ -12,9 +12,9 @@
 
     header {
       display: flex;
-      justify-content: center; /* Center the navigation */
+      justify-content: space-between; /* Space between logo and nav */
       align-items: center;
-      padding: 20px 5%;
+      padding: 12px 5%; /* Slightly reduced padding for better fit */
       background-color: #1a4a6b; /* Bleu foncé */
       position: sticky;
       top: 0;
@@ -24,23 +24,30 @@
       width: 100%; /* Pleine largeur */
     }
     .header.scrolled {
-        padding: 15px 5%;
+        padding: 10px 5%;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Logo styling in header */
+    .header-logo {
+      height: 45px; /* Fixed height to fit header */
+      width: auto; /* Maintain aspect ratio */
+      border-radius: 6px;
     }
     
     /* Navigation styling */
     header nav {
       display: flex;
-      gap: 40px; /* Spacing between links */
+      gap: 30px; /* Slightly reduced gap for better fit */
     }
     
     header nav a {
       color: white; /* White text */
       text-decoration: none; /* Remove underline */
       font-weight: 700; /* Bold text */
-      font-size: 1.1rem;
+      font-size: 1rem; /* Slightly smaller font for better fit */
       transition: all 0.3s ease;
-      padding: 8px 16px;
+      padding: 8px 14px;
       border-radius: 4px;
     }
     
@@ -96,31 +103,34 @@
       z-index: 2;
     }
     
+    /* BU5 Title Styling */
+    .bu5-title {
+      font-size: 8rem;
+      font-weight: 900;
+      color: #1a4a6b;
+      text-align: center;
+      margin-bottom: 20px;
+      text-shadow: 4px 4px 0px rgba(26, 74, 107, 0.2);
+      letter-spacing: -2px;
+      line-height: 0.9;
+      animation: fadeUp 1.5s ease both;
+      position: relative;
+    }
+    
+    .bu5-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(90deg, #1a4a6b, #3a6eb0);
+      border-radius: 3px;
+    }
+    
     .logo-container {
       position: relative;
       display: inline-block;
-    }
-    
-    .hero-logo {
-      width: 230px;
-      border-radius: 16px;
-      animation: float 3s ease-in-out infinite;
-      box-shadow: 0 10px 30px rgba(26, 74, 128, 0.2);
-      position: relative;
-      z-index: 2;
-    }
-    
-    .logo-glow {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border-radius: 16px;
-      background: linear-gradient(45deg, rgba(58,110,176,0.4), rgba(26,74,128,0.2));
-      filter: blur(15px);
-      z-index: 1;
-      animation: pulse 4s ease-in-out infinite alternate;
     }
     
     .hero-team {
@@ -319,6 +329,10 @@
         transform: translateX(-50%);
       }
       
+      .bu5-title {
+        font-size: 6rem;
+      }
+      
       .hero-team {
         width: 300px;
       }
@@ -333,12 +347,22 @@
       }
       
       /* Responsive header */
+      header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 5%;
+      }
+      
+      .header-logo {
+        height: 40px;
+      }
+      
       header nav {
-        gap: 20px;
+        gap: 15px;
       }
       
       header nav a {
-        font-size: 1rem;
+        font-size: 0.95rem;
         padding: 6px 12px;
       }
     }
@@ -346,6 +370,10 @@
     @media(max-width:480px){
       .hero h1 {
         font-size: 1.8rem;
+      }
+      
+      .bu5-title {
+        font-size: 4rem;
       }
       
       .hero-team {
@@ -361,12 +389,16 @@
       header nav {
         flex-wrap: wrap;
         justify-content: center;
-        gap: 10px;
+        gap: 8px;
       }
       
       header nav a {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         padding: 5px 10px;
+      }
+      
+      .header-logo {
+        height: 35px;
       }
     }
   </style>
@@ -376,6 +408,7 @@
 
   <!-- HEADER -->
   <header>
+    <img src="LOGO.png" alt="BU5 Logo" class="header-logo" />
     <nav>
       <a href="#home">Home</a>
       <a href="#services">Services</a>
@@ -395,10 +428,7 @@
     </div>
     
     <div class="hero-left">
-      <div class="logo-container">
-        <img src="LOGO.png" alt="BU5 Logo" class="hero-logo" />
-        <div class="logo-glow"></div>
-      </div>
+      <h1 class="bu5-title">BU5</h1>
       <div class="logo-container">
         <img src="Group.png" alt="Team 5" class="hero-team" />
         <div class="team-glow"></div>
@@ -419,7 +449,7 @@
   <section class="services" id="services">
     <h2>Our Services</h2>
     <p>This is our services — we merge innovation, precision, and teamwork to bring your ideas to life through creative digital and engineering solutions.</p>
-    <a href="http://127.0.0.1:5500/services.html" target="_blank" class="btn sparkle">Discover Our Services</a>
+    <a href="https://www.jeuniso.com" target="_blank" class="btn sparkle">Discover Our Services</a>
   </section>
 
   <!-- WORK -->
@@ -485,11 +515,11 @@
 
     // Floating Parallax Effect on Hero Images
     window.addEventListener('mousemove', e => {
-      const logo = document.querySelector('.hero-logo');
+      const bu5Title = document.querySelector('.bu5-title');
       const team = document.querySelector('.hero-team');
       const x = (window.innerWidth - e.pageX * 2) / 100;
       const y = (window.innerHeight - e.pageY * 2) / 100;
-      logo.style.transform = `translate(${x}px, ${y}px)`;
+      bu5Title.style.transform = `translate(${x}px, ${y}px)`;
       team.style.transform = `translate(${-x}px, ${-y}px) scale(1.05)`;
     });
 
@@ -527,9 +557,9 @@
     let floatOffset = 0;
     setInterval(() => {
       floatOffset = (floatOffset + 0.03) % (2 * Math.PI);
-      const logo = document.querySelector('.hero-logo');
+      const bu5Title = document.querySelector('.bu5-title');
       const team = document.querySelector('.hero-team');
-      logo.style.transform = `translateY(${Math.sin(floatOffset) * 8}px)`;
+      bu5Title.style.transform = `translateY(${Math.sin(floatOffset) * 8}px)`;
       team.style.transform = `translateY(${Math.cos(floatOffset) * 10}px) scale(1.03)`;
     }, 40);
   </script>
