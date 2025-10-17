@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BU5 - Innovative Team</title>
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:"Montserrat",sans-serif;}
+    html{scroll-behavior:smooth;}
+    body{background:hsl(210, 63%, 97%);color:#1a1a1a;overflow-x:hidden;}
+
+    header {
+      display: flex;
+      justify-content: center; /* Center the navigation */
+      align-items: center;
+      padding: 20px 5%;
+      background-color: #1a4a6b; /* Bleu foncé */
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      width: 100%; /* Pleine largeur */
+    }
+    .header.scrolled {
+        padding: 15px 5%;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Navigation styling */
+    header nav {
+      display: flex;
+      gap: 40px; /* Spacing between links */
+    }
+    
+    header nav a {
+      color: white; /* White text */
+      text-decoration: none; /* Remove underline */
+      font-weight: 700; /* Bold text */
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      padding: 8px 16px;
+      border-radius: 4px;
+    }
+    
+    header nav a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    /* Creative Hero Section */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 80px 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+      animation: fadeIn 1.3s ease;
+      position: relative;
+      overflow: hidden;
+      min-height: 85vh;
+    }
+    
+    /* Background elements */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(58,110,176,0.1) 0%, rgba(26,74,128,0.05) 70%, transparent 100%);
+      border-radius: 50%;
+      z-index: -1;
+    }
+    
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(58,110,176,0.08) 0%, rgba(26,74,128,0.03) 70%, transparent 100%);
+      border-radius: 50%;
+      z-index: -1;
+    }
+    
+    .hero-left {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 30px;
+      position: relative;
+      z-index: 2;
+      padding-right: 40px;
+    }
+    
+    /* Logo and Title Container */
+    .brand-container {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      margin-bottom: 20px;
+    }
+    
+    .hero-logo {
+      width: 120px;
+      height: 120px;
+      border-radius: 20px;
+      animation: float 3s ease-in-out infinite;
+      box-shadow: 0 15px 35px rgba(26, 74, 128, 0.25);
+      border: 3px solid rgba(255, 255, 255, 0.9);
+      position: relative;
+      z-index: 2;
+    }
+    
+    .logo-glow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+      background: linear-gradient(45deg, rgba(58,110,176,0.4), rgba(26,74,128,0.2));
+      filter: blur(15px);
+      z-index: 1;
+      animation: pulse 4s ease-in-out infinite alternate;
+    }
+    
+    /* BU5 Title Styling */
+    .bu5-title {
+      font-size: 5.5rem;
+      font-weight: 900;
+      color: #1a4a6b;
+      text-shadow: 3px 3px 0px rgba(26, 74, 107, 0.15);
+      letter-spacing: -1px;
+      line-height: 0.9;
+      animation: fadeUp 1.5s ease both;
+      position: relative;
+    }
+    
+    .bu5-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #1a4a6b, #3a6eb0);
+      border-radius: 2px;
+    }
+    
+    .hero-tagline {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #1a4a6b;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: #38454d;
+      margin-bottom: 35px;
+      line-height: 1.6;
+      max-width: 90%;
+    }
+    
+    .hero-cta {
+      display: flex;
+      gap: 20px;
+      margin-top: 10px;
+    }
+    
+    .hero-right {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .hero-team {
+      width: 480px;
+      border-radius: 24px;
+      animation: floatLarge 4s ease-in-out infinite alternate;
+      box-shadow: 0 20px 50px rgba(26, 74, 128, 0.3);
+      border: 4px solid rgba(255, 255, 255, 0.9);
+      position: relative;
+      z-index: 2;
+    }
+    
+    .team-glow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 24px;
+      background: linear-gradient(45deg, rgba(58,110,176,0.3), rgba(26,74,128,0.15));
+      filter: blur(25px);
+      z-index: 1;
+      animation: pulse 4s ease-in-out infinite alternate-reverse;
+    }
+    
+    .floating-elements {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    .floating-element {
+      position: absolute;
+      background: rgba(58, 110, 176, 0.1);
+      border-radius: 50%;
+      animation: floatRandom 15s infinite linear;
+    }
+    
+    .floating-element:nth-child(1) {
+      width: 20px;
+      height: 20px;
+      top: 20%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+    
+    .floating-element:nth-child(2) {
+      width: 15px;
+      height: 15px;
+      top: 70%;
+      left: 15%;
+      animation-delay: 2s;
+    }
+    
+    .floating-element:nth-child(3) {
+      width: 25px;
+      height: 25px;
+      top: 40%;
+      right: 20%;
+      animation-delay: 4s;
+    }
+    
+    .floating-element:nth-child(4) {
+      width: 10px;
+      height: 10px;
+      top: 80%;
+      right: 30%;
+      animation-delay: 6s;
+    }
+
+    .services,.work,.team-section,.contact{padding:90px 20px;text-align:center;animation:fadeUp 1.2s ease both;}
+    .services h2,.work h2,.team-section h2,.contact h2{color:#1a4a80;font-size:2.2rem;margin-bottom:20px;}
+    .services p,.work p,.contact p{color:#4b5961;font-size:1.05rem;max-width:850px;margin:auto;margin-bottom:25px;}
+    .services{background:#eef5fb;}
+    .work{background:#f8fbff;}
+    .team-section{background:#f0f7fb;}
+    .contact{background:#1a4a6b;;color:white;}
+
+    .btn,.contact-btn{padding:14px 32px;border-radius:30px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block;transition:.3s;}
+    .btn{background:#3a6eb0;color:white;}
+    .btn:hover{background:#1a4a80;transform:scale(1.05);}
+    .contact-btn{background:white;color:#1a4a80;}
+    .contact-btn:hover{background:#3a6eb0;color:white;transform:scale(1.05);}
+
+    .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:25px;max-width:1100px;margin:auto;}
+    .member img{width:180px;height:180px;border-radius:50%;border:5px solid #3a6eb0;transition:.3s;animation:fadePop 1.4s ease both;}
+    .member:hover img{transform:scale(1.15) rotate(2deg);box-shadow:0 10px 25px rgba(58,110,176,0.3);}
+    .member p{color:#1a4a80;font-weight:600;margin-top:10px;}
+    .member a{text-decoration:none;color:inherit;display:block;}
+
+    form{display:flex;flex-direction:column;gap:15px;max-width:500px;margin:auto;}
+    input,textarea{padding:12px;border-radius:12px;border:none;font-size:1rem;}
+    textarea{resize:none;height:120px;}
+
+    footer{background:#1a4a6b;color:aliceblue;text-align:center;padding:18px;font-size:.95rem;}
+
+    /* Animations */
+    @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
+    @keyframes fadeDown{from{opacity:0;transform:translateY(-30px);}to{opacity:1;transform:translateY(0);}}
+    @keyframes fadePop{from{opacity:0;transform:scale(0.8);}to{opacity:1;transform:scale(1);}}
+    @keyframes float{0%{transform:translateY(0);}50%{transform:translateY(-15px);}100%{transform:translateY(0);}}
+    @keyframes floatLarge{0%{transform:translateY(0) scale(1);}50%{transform:translateY(-25px) scale(1.02);}100%{transform:translateY(0) scale(1);}}
+    @keyframes sparkleAnim{0%,100%{box-shadow:0 0 10px rgba(255,255,255,.6);}50%{box-shadow:0 0 25px rgba(255,255,255,1);}}
+    @keyframes pulse {
+      0% { opacity: 0.4; }
+      50% { opacity: 0.7; }
+      100% { opacity: 0.4; }
+    }
+    @keyframes floatRandom {
+      0% { transform: translateY(0) translateX(0) rotate(0deg); }
+      25% { transform: translateY(-20px) translateX(10px) rotate(90deg); }
+      50% { transform: translateY(0) translateX(20px) rotate(180deg); }
+      75% { transform: translateY(20px) translateX(10px) rotate(270deg); }
+      100% { transform: translateY(0) translateX(0) rotate(360deg); }
+    }
+
+    .sparkle{animation:sparkleAnim 2s ease-in-out infinite alternate;}
+
+    .reveal{opacity:0;transform:translateY(60px);transition:1s ease all;}
+    .reveal.active{opacity:1;transform:translateY(0);}
+
+    /* Responsive */
+    @media(max-width:1100px){
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 60px 20px;
+        gap: 50px;
+      }
+      
+      .hero-left {
+        align-items: center;
+        padding-right: 0;
+      }
+      
+      .brand-container {
+        justify-content: center;
+      }
+      
+      .bu5-title {
+        font-size: 4.5rem;
+      }
+      
+      .hero-tagline {
+        font-size: 1.6rem;
+      }
+      
+      .hero-subtitle {
+        max-width: 100%;
+        text-align: center;
+      }
+      
+      .hero-cta {
+        justify-content: center;
+      }
+      
+      .hero-team {
+        width: 380px;
+      }
+    }
+    
+    @media(max-width:768px){
+      .brand-container {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .bu5-title {
+        font-size: 3.5rem;
+      }
+      
+      .hero-tagline {
+        font-size: 1.4rem;
+      }
+      
+      .hero-team {
+        width: 300px;
+      }
+      
+      /* Responsive header */
+      header nav {
+        gap: 20px;
+      }
+      
+      header nav a {
+        font-size: 1rem;
+        padding: 6px 12px;
+      }
+    }
+    
+    @media(max-width:480px){
+      .hero {
+        padding: 40px 15px;
+      }
+      
+      .bu5-title {
+        font-size: 2.8rem;
+      }
+      
+      .hero-tagline {
+        font-size: 1.2rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+      
+      .hero-cta {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .hero-team {
+        width: 260px;
+      }
+      
+      /* Responsive header for mobile */
+      header nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+      }
+      
+      header nav a {
+        font-size: 0.9rem;
+        padding: 5px 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#team">Team</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="floating-elements">
+      <div class="floating-element"></div>
+      <div class="floating-element"></div>
+      <div class="floating-element"></div>
+      <div class="floating-element"></div>
+    </div>
+    
+    <div class="hero-left">
+      <div class="brand-container">
+        <div class="logo-container">
+          <img src="loog.png" alt="BU5 Logo" class="hero-logo" />
+          <div class="logo-glow"></div>
+        </div>
+        <h1 class="bu5-title">BU5</h1>
+      </div>
+      
+      <h2 class="hero-tagline">UNITING THE EIGHT ON UNBREAKABLE TIES BU5 WILL ALWAYS AIM TO RISE</h2>
+      <p class="hero-subtitle">We are a team of innovators, creators, and problem-solvers dedicated to pushing the boundaries of technology and design to deliver exceptional solutions that make a real impact.</p>
+      <div class="hero-cta">
+        <a href="#services" class="btn sparkle">Our Services</a>
+        <a href="#team" class="btn">Meet Our Team</a>
+      </div>
+    </div>
+    
+    <div class="hero-right">
+      <div class="logo-container">
+        <img src="Group.png" alt="Team 5" class="hero-team" />
+        <div class="team-glow"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <h2>Our Services</h2>
+    <p>This is our services — we merge innovation, precision, and teamwork to bring your ideas to life through creative digital and engineering solutions.</p>
+    <a href="https://www.jeuniso.com" target="_blank" class="btn sparkle">Discover Our Services</a>
+  </section>
+
+  <!-- WORK -->
+  <section class="work" id="work">
+    <h2>Our Work</h2>
+    <p>At BU5, every project starts with a bold idea. We design, prototype, and deliver real solutions that make a difference.</p>
+    <p>From 3D modeling and smart devices to web platforms and automation tools, our projects reflect dedication, curiosity, and innovation.</p>
+    <p>Our goal is simple — to build smarter, faster, and stronger systems that push creativity beyond limits. We turn vision into reality, transforming ideas into impactful achievements.</p>
+  </section>
+
+  <!-- TEAM -->
+  <section class="team-section" id="team">
+    <h2>Meet Our 8 Innovators</h2>
+    <div class="team-grid">
+      <div class="member reveal"><a href="http://127.0.0.1:5500/last.html" target="_blank"><img src="islem2.png" alt=""><p>Islem Ben Hammouda</p></a></div>
+      <div class="member reveal"><a href="https://example.com/member2" target="_blank"><img src="salim.png" alt=""><p>Salim Hamrouni</p></a></div>
+      <div class="member reveal"><a href="https://example.com/member3" target="_blank"><img src="Eyaa.jpg" alt=""><p>Eya Jerbi</p></a></div>
+      <div class="member reveal"><a href="https://example.com/member4" target="_blank"><img src="Rayhan.png" alt=""><p>Rayhan Tej</p></a></div>
+      <div class="member reveal"><a href="https://example.com/member5" target="_blank"><img src="Roua.jpeg" alt=""><p>Roua Harrath</p></a></div>
+      <div class="member reveal"><a href="https://example.com/member6" target="_blank"><img src="Aymen.png" alt=""><p>Aymen Chriti</p></a></div>
+      <div class="member reveal"><a href="https://example.com/member7" target="_blank"><img src="Farah.png" alt=""><p>Farah Khcherem</p></a></div>
+      <div class="member reveal"><a href="https://example.com/member8" target="_blank"><img src="Saif.png" alt=""><p>Saif Eddine Ben Mosbah</p></a></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <h2>Contact Us</h2>
+    <p>Have an idea? A challenge? Let's make something incredible together.</p>
+    <form id="contactForm">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit" class="contact-btn sparkle">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 BU5 | Junior Enterprise ENISo</p>
+  </footer>
+
+  <script>
+    // Smooth Scroll for nav links
+    document.querySelectorAll('header nav a').forEach(link => {
+      link.addEventListener('click', e => {
+        if (link.getAttribute('href').startsWith('#')) {
+          e.preventDefault();
+          const target = document.querySelector(link.getAttribute('href'));
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Scroll Reveal Animations
+    const revealElements = document.querySelectorAll('.reveal, .services, .work, .team-section, .contact');
+    window.addEventListener('scroll', () => {
+      const triggerBottom = window.innerHeight * 0.85;
+      revealElements.forEach(el => {
+        const boxTop = el.getBoundingClientRect().top;
+        if (boxTop < triggerBottom) el.classList.add('active');
+      });
+    });
+
+    // Floating Parallax Effect on Hero Images
+    window.addEventListener('mousemove', e => {
+      const logo = document.querySelector('.hero-logo');
+      const bu5Title = document.querySelector('.bu5-title');
+      const team = document.querySelector('.hero-team');
+      const x = (window.innerWidth - e.pageX * 2) / 100;
+      const y = (window.innerHeight - e.pageY * 2) / 100;
+      logo.style.transform = `translate(${x}px, ${y}px)`;
+      bu5Title.style.transform = `translate(${x}px, ${y}px)`;
+      team.style.transform = `translate(${-x}px, ${-y}px) scale(1.05)`;
+    });
+
+    // Button spark animation
+    document.querySelectorAll('.sparkle').forEach(btn => {
+      btn.addEventListener('mousemove', e => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        btn.style.background = `radial-gradient(circle at ${x}px ${y}px, #4e8ef5, #1a4a80)`;
+      });
+      btn.addEventListener('mouseleave', () => btn.style.background = '');
+    });
+
+    // Contact form fake submit animation
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const btn = form.querySelector('.contact-btn');
+      btn.textContent = "Sending...";
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.textContent = "Message Sent!";
+        btn.style.background = "#4e8ef5";
+        btn.style.color = "white";
+        setTimeout(() => {
+          btn.textContent = "Send Message";
+          btn.disabled = false;
+          form.reset();
+        }, 2000);
+      }, 1500);
+    });
+
+    // Floating hero elements movement loop
+    let floatOffset = 0;
+    setInterval(() => {
+      floatOffset = (floatOffset + 0.03) % (2 * Math.PI);
+      const logo = document.querySelector('.hero-logo');
+      const bu5Title = document.querySelector('.bu5-title');
+      const team = document.querySelector('.hero-team');
+      logo.style.transform = `translateY(${Math.sin(floatOffset) * 8}px)`;
+      bu5Title.style.transform = `translateY(${Math.sin(floatOffset) * 8}px)`;
+      team.style.transform = `translateY(${Math.cos(floatOffset) * 10}px) scale(1.03)`;
+    }, 40);
+  </script>
+</body>
+</html>
