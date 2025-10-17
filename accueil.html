@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BU5 - Innovative Team</title>
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:"Montserrat",sans-serif;}
+    html{scroll-behavior:smooth;}
+    body{background:#f2f7fc;color:#1a1a1a;overflow-x:hidden;}
+
+    header{position:sticky;top:0;z-index:1000;background:#1a4a80;display:flex;justify-content:center;align-items:center;padding:14px 40px;box-shadow:0 2px 10px rgba(0,0,0,0.1);animation:fadeDown 1s ease;}
+    header nav{display:flex;gap:28px;}
+    header nav a{color:white;text-decoration:none;font-weight:700;padding:8px 12px;border-radius:8px;transition:.3s;}
+    header nav a:hover{background:rgba(255,255,255,0.2);color:#a3c4f5;}
+
+    .hero{text-align:center;padding:90px 20px;animation:fadeIn 1.3s ease;}
+    .hero-logo{width:230px;border-radius:16px;margin-bottom:20px;animation:float 3s ease-in-out infinite;}
+    .hero h1{font-size:2.5rem;color:#1a4a80;margin-bottom:20px;animation:fadeUp 1.5s ease both;}
+    .hero-team{width:420px;border-radius:20px;margin-top:10px;animation:floatLarge 4s ease-in-out infinite alternate;}
+
+    .services,.work,.team-section,.contact{padding:90px 20px;text-align:center;animation:fadeUp 1.2s ease both;}
+    .services h2,.work h2,.team-section h2,.contact h2{color:#1a4a80;font-size:2.2rem;margin-bottom:20px;}
+    .services p,.work p,.contact p{color:#4b5961;font-size:1.05rem;max-width:850px;margin:auto;margin-bottom:25px;}
+    .services{background:#eef5fb;}
+    .work{background:#f8fbff;}
+    .team-section{background:#f0f7fb;}
+    .contact{background:#1a4a80;color:white;}
+
+    .btn,.contact-btn{padding:14px 32px;border-radius:30px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block;transition:.3s;}
+    .btn{background:#3a6eb0;color:white;}
+    .btn:hover{background:#1a4a80;transform:scale(1.1);}
+    .contact-btn{background:white;color:#1a4a80;}
+    .contact-btn:hover{background:#3a6eb0;color:white;transform:scale(1.1);}
+
+    .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:25px;max-width:1100px;margin:auto;}
+    .member img{width:180px;height:180px;border-radius:50%;border:5px solid #3a6eb0;transition:.3s;animation:fadePop 1.4s ease both;}
+    .member:hover img{transform:scale(1.15) rotate(2deg);box-shadow:0 10px 25px rgba(58,110,176,0.3);}
+    .member p{color:#1a4a80;font-weight:600;margin-top:10px;}
+    .member a{text-decoration:none;color:inherit;display:block;}
+
+    form{display:flex;flex-direction:column;gap:15px;max-width:500px;margin:auto;}
+    input,textarea{padding:12px;border-radius:12px;border:none;font-size:1rem;}
+    textarea{resize:none;height:120px;}
+
+    footer{background:#3a6eb0;color:white;text-align:center;padding:18px;font-size:.95rem;}
+
+    /* Animations */
+    @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
+    @keyframes fadeDown{from{opacity:0;transform:translateY(-30px);}to{opacity:1;transform:translateY(0);}}
+    @keyframes fadePop{from{opacity:0;transform:scale(0.8);}to{opacity:1;transform:scale(1);}}
+    @keyframes float{0%{transform:translateY(0);}50%{transform:translateY(-15px);}100%{transform:translateY(0);}}
+    @keyframes floatLarge{0%{transform:translateY(0) scale(1);}50%{transform:translateY(-25px) scale(1.02);}100%{transform:translateY(0) scale(1);}}
+    @keyframes sparkleAnim{0%,100%{box-shadow:0 0 10px rgba(255,255,255,.6);}50%{box-shadow:0 0 25px rgba(255,255,255,1);}}
+
+    .sparkle{animation:sparkleAnim 2s ease-in-out infinite alternate;}
+
+    .reveal{opacity:0;transform:translateY(60px);transition:1s ease all;}
+    .reveal.active{opacity:1;transform:translateY(0);}
+
+    /* Responsive */
+    @media(max-width:900px){.hero h1{font-size:2rem;}.hero-team{width:300px;}}
+    @media(max-width:480px){.hero h1{font-size:1.5rem;}.hero-team{width:220px;}}
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#team">Team</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <img src="logo.png" alt="BU5 Logo" class="hero-logo float" />
+    <h1>UNITING THE EIGHT ON UNBREAKABLE TIES<br>BU5 WILL ALWAYS AIM</h1>
+    <img src="team5.jpg" alt="Team 5" class="hero-team float-large" />
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <h2>Our Services</h2>
+    <p>This is our services — we merge innovation, precision, and teamwork to bring your ideas to life through creative digital and engineering solutions.</p>
+    <a href="https://www.jeuniso.com" target="_blank" class="btn sparkle">Discover Our Services</a>
+  </section>
+
+  <!-- WORK -->
+  <section class="work" id="work">
+    <h2>Our Work</h2>
+    <p>At BU5, every project starts with a bold idea. We design, prototype, and deliver real solutions that make a difference.</p>
+    <p>From 3D modeling and smart devices to web platforms and automation tools, our projects reflect dedication, curiosity, and innovation.</p>
+    <p>Our goal is simple — to build smarter, faster, and stronger systems that push creativity beyond limits. We turn vision into reality, transforming ideas into impactful achievements.</p>
+  </section>
+
+  <!-- TEAM -->
+  <section class="team-section" id="team">
+    <h2>Meet Our 8 Innovators</h2>
+    <div class="team-grid">
+      <div class="member reveal"><a href="https://example.com/member1" target="_blank"><img src="member1.jpg" alt=""><p>Member 1</p></a></div>
+      <div class="member reveal"><a href="https://example.com/member2" target="_blank"><img src="member2.jpg" alt=""><p>Member 2</p></a></div>
+      <div class="member reveal"><a href="https://example.com/member3" target="_blank"><img src="member3.jpg" alt=""><p>Member 3</p></a></div>
+      <div class="member reveal"><a href="https://example.com/member4" target="_blank"><img src="member4.jpg" alt=""><p>Member 4</p></a></div>
+      <div class="member reveal"><a href="https://example.com/member5" target="_blank"><img src="member5.jpg" alt=""><p>Member 5</p></a></div>
+      <div class="member reveal"><a href="https://example.com/member6" target="_blank"><img src="member6.jpg" alt=""><p>Member 6</p></a></div>
+      <div class="member reveal"><a href="https://example.com/member7" target="_blank"><img src="member7.jpg" alt=""><p>Member 7</p></a></div>
+      <div class="member reveal"><a href="https://example.com/member8" target="_blank"><img src="member8.jpg" alt=""><p>Member 8</p></a></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <h2>Contact Us</h2>
+    <p>Have an idea? A challenge? Let’s make something incredible together.</p>
+    <form id="contactForm">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit" class="contact-btn sparkle">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 BU5 | Junior Enterprise ENISo</p>
+  </footer>
+
+  <script>
+    // Smooth Scroll for nav links
+    document.querySelectorAll('header nav a').forEach(link => {
+      link.addEventListener('click', e => {
+        if (link.getAttribute('href').startsWith('#')) {
+          e.preventDefault();
+          const target = document.querySelector(link.getAttribute('href'));
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Scroll Reveal Animations
+    const revealElements = document.querySelectorAll('.reveal, .services, .work, .team-section, .contact');
+    window.addEventListener('scroll', () => {
+      const triggerBottom = window.innerHeight * 0.85;
+      revealElements.forEach(el => {
+        const boxTop = el.getBoundingClientRect().top;
+        if (boxTop < triggerBottom) el.classList.add('active');
+      });
+    });
+
+    // Floating Parallax Effect on Hero Images
+    window.addEventListener('mousemove', e => {
+      const logo = document.querySelector('.hero-logo');
+      const team = document.querySelector('.hero-team');
+      const x = (window.innerWidth - e.pageX * 2) / 100;
+      const y = (window.innerHeight - e.pageY * 2) / 100;
+      logo.style.transform = `translate(${x}px, ${y}px)`;
+      team.style.transform = `translate(${-x}px, ${-y}px) scale(1.05)`;
+    });
+
+    // Button spark animation
+    document.querySelectorAll('.sparkle').forEach(btn => {
+      btn.addEventListener('mousemove', e => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        btn.style.background = `radial-gradient(circle at ${x}px ${y}px, #4e8ef5, #1a4a80)`;
+      });
+      btn.addEventListener('mouseleave', () => btn.style.background = '');
+    });
+
+    // Contact form fake submit animation
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const btn = form.querySelector('.contact-btn');
+      btn.textContent = "Sending...";
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.textContent = "Message Sent!";
+        btn.style.background = "#4e8ef5";
+        btn.style.color = "white";
+        setTimeout(() => {
+          btn.textContent = "Send Message";
+          btn.disabled = false;
+          form.reset();
+        }, 2000);
+      }, 1500);
+    });
+
+    // Floating hero elements movement loop
+    let floatOffset = 0;
+    setInterval(() => {
+      floatOffset = (floatOffset + 0.03) % (2 * Math.PI);
+      const logo = document.querySelector('.hero-logo');
+      const team = document.querySelector('.hero-team');
+      logo.style.transform = `translateY(${Math.sin(floatOffset) * 8}px)`;
+      team.style.transform = `translateY(${Math.cos(floatOffset) * 10}px) scale(1.03)`;
+    }, 40);
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
